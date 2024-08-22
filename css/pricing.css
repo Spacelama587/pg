@@ -1,0 +1,237 @@
+.sd-container * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .sd-container {
+    width: 100%;
+    min-height: 100vh;
+    background: #000;
+    font-family: "Arame", sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+  }
+  
+  .sd-container p {
+    text-transform: uppercase;
+  }
+  
+  .sd-nav {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    gap: 0.25em;
+    padding: 0.25em 0 0 0;
+    background: #000;
+  }
+  
+  .sd-nav > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    background: #fff;
+    color: #000;
+    border-radius: 10px;
+  }
+  
+  .sd-nav-1 {
+    flex: 3;
+  }
+  
+  .sd-nav-2 {
+    flex: 2;
+  }
+  
+  .sd-nav-3 {
+    flex: 3;
+  }
+  
+  .sd-content-wrapper {
+    flex: 12;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 0 0 0.5em 0;
+    gap: 0.25em;
+    background: #000;
+  }
+  
+  .sd-content-wrapper .sd-col {
+    border-radius: 10px;
+    background: #fff;
+    padding: 3em 2em;
+  }
+  
+  .sd-col-1 {
+    flex: 5.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .sd-col-2 {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .sd-col-1 p {
+    font-size: 12px;
+    line-height: 1;
+  }
+  
+  .sd-col-1 .sd-hero-img {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .sd-col-1 img,
+  .sd-col-2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .sd-col-1 h1 {
+    font-family: "Mars Model", sans-serif;
+    font-size: 100px;
+    text-transform: uppercase;
+    line-height: 0.8;
+  }
+  
+  .sd-numbers {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .sd-numbers p {
+    flex: 1;
+  }
+  
+  .sd-numbers p:nth-child(3) {
+    text-align: right;
+  }
+  
+  .sd-numbers .sd-hr,
+  .sd-img .sd-hr {
+    flex: 5;
+    width: 100%;
+    height: 2px;
+    background: #000;
+  }
+  
+  .sd-cta {
+    width: 100%;
+  }
+  
+  .sd-cta .sd-cta-btn {
+    background: #000;
+    color: #fff;
+    padding: 1.5em;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .sd-cta-btn h3 {
+    font-family: "Mars Model", sans-serif;
+    font-size: 40px;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  
+  .sd-cta-btn h3 ion-icon {
+    position: relative;
+    top: 7.5px;
+  }
+  
+  .sd-p-img {
+    position: relative;
+    width: 70%;
+    height: 160px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-10deg);
+  }
+  
+  .sd-p-img-border {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #000;
+    border-radius: 10px;
+  }
+  
+  .sd-p-img-wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 2;
+  }
+  
+  .sd-p-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .sd-img {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sd-img-data {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .sd-img-name p {
+    font-size: 24px;
+  }
+  
+  .sd-img-info p {
+    font-size: 12px;
+    line-height: 1;
+    text-align: right;
+  }
+  
+  .sd-img .sd-hr {
+    margin: 1em 0;
+  }
+  
+  .sd-price {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  p#sd-amount {
+    font-size: 40px;
+  }
+  
+  .sd-carousel {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sd-arrow {
+    font-size: 32px;
+    padding: 1em;
+    border-radius: 10px;
+    background: #000;
+    color: #fff;
+  }

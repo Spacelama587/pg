@@ -10,7 +10,7 @@
 	--color-bg: #000;
 	--color-link: #aaa;
 	--color-link-hover: #fff;
-	--page-padding: 1rem;
+	/* --page-padding: 1rem; */
 }
 
 html, body {
@@ -89,18 +89,7 @@ a:focus-visible {
 	outline: 2px solid red;
 }
 
-.unbutton {
-	background: none;
-	border: 0;
-	padding: 0;
-	margin: 0;
-	font: inherit;
-	cursor: pointer;
-}
 
-.unbutton:focus {
-	outline: none;
-}
 
 main {
 	padding: var(--page-padding);
@@ -109,56 +98,7 @@ main {
 	overflow: hidden;
 }
 
-.frame {
-	position: relative;
-	display: grid;
-	width: 100%;
-	grid-row-gap: 1rem;
-	grid-column-gap: 2rem;
-	pointer-events: none;
-	justify-items: start;
-}
 
-.frame--header {
-	margin-bottom: 10vh;
-	grid-template-columns: auto auto;
-	grid-template-areas: 'title' 'prev' 'back' 'sub' 'sponsor';
-}
-
-.frame--footer {
-	margin-top: 40vh;
-	grid-template-columns: auto auto;
-	justify-content: space-between;
-}
-
-.frame #cdawrap {
-	justify-self: start;
-}
-
-.frame a {
-	pointer-events: auto;
-	font-weight: 700;
-}
-
-.frame__title {
-	grid-area: title;
-	font-size: inherit;
-	margin: 0;
-}
-
-.frame__back {
-	grid-area: back;
-	justify-self: start;
-}
-
-.frame__prev {
-	grid-area: prev;
-	justify-self: start;
-}
-
-.frame__sub {
-	grid-area: sub;
-}
 
 .content {
 	display: grid;
@@ -172,10 +112,15 @@ main {
 
 .content p {
 	justify-self: center;
+	
+
+}
+
+.we-do-para{
+	font-size: 10vh;
 	margin-bottom: 6vh;
 	font-weight: 600;
 	opacity: 0.5;
-  font-size: 10vh
 }
 
 .end {
