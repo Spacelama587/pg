@@ -1,99 +1,99 @@
-document.addEventListener("DOMContentLoaded", () => {
-
-const sdWrapper = document.querySelector(".sd-wrapper");
-const sdCarousel = document.querySelector(".sd-carousel");
-const sdFirstCardWidth = sdCarousel.querySelector(".sd-card");
-const sdArrowBtns = document.querySelectorAll(".sd-wrapper .sd-arrow");
-const sdCarouselChildrens = [...sdCarousel.children];
-
-let sdIsDragging = false,
-    sdIsAutoPlay = true,
-    sdStartX,
-    sdStartScrollLeft,
-    sdTimeoutId;
-
-
-let sdCardPerView = Math.round(sdCarousel.offsetWidth / sdFirstCardWidth);
-
-// Insert copies of the last few cards to beginning of carousel for infinite scrolling
-sdCarouselChildrens
-  .slice(-sdCardPerView)
-  .reverse()
-  .forEach((card) => {
-    sdCarousel.insertAdjacentHTML("afterbegin", card.outerHTML);
+document.addEventListener('DOMContentLoaded', function() {
+    const teamWrapper = document.querySelector(".team-wrapper");
+    const teamCarousel = document.querySelector(".team-carousel");
+    const teamFirstCardWidth = teamCarousel.querySelector(".team-card").offsetWidth;
+    const teamArrowBtns = document.querySelectorAll(".team-wrapper .team-arrow");
+    const teamCarouselChildrens = [...teamCarousel.children];
+  
+    let teamIsDragging = false,
+        teamIsAutoPlay = true,
+        teamStartX,
+        teamStartScrollLeft,
+        teamTimeoutId;
+  
+    // Get the number of cards that can fit in the carousel at once
+    let teamCardPerView = Math.round(teamCarousel.offsetWidth / teamFirstCardWidth);
+  
+    // Insert copies of the last few cards to beginning of carousel for infinite scrolling
+    teamCarouselChildrens
+      .slice(-teamCardPerView)
+      .reverse()
+      .forEach((card) => {
+        teamCarousel.insertAdjacentHTML("afterbegin", card.outerHTML);
+      });
+  
+    // Insert copies of the first few cards to end of carousel for infinite scrolling
+    teamCarouselChildrens.slice(0, teamCardPerView).forEach((card) => {
+      teamCarousel.insertAdjacentHTML("beforeend", card.outerHTML);
+    });
+  
+    // Scroll the carousel at appropriate position to hide first few duplicate cards on Firefox
+    teamCarousel.classList.add("team-no-transition");
+    teamCarousel.scrollLeft = teamCarousel.offsetWidth;
+    teamCarousel.classList.remove("team-no-transition");
+  
+    // Add event listeners for the arrow buttons to scroll the carousel left and right
+    teamArrowBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        teamCarousel.scrollLeft += btn.id === "team-left" ? -teamFirstCardWidth : teamFirstCardWidth;
+      });
+    });
+  
+    const teamDragStart = (e) => {
+      teamIsDragging = true;
+      teamCarousel.classList.add("team-dragging");
+      // Records the initial cursor and scroll position of the carousel
+      teamStartX = e.pageX;
+      teamStartScrollLeft = teamCarousel.scrollLeft;
+    };
+  
+    const teamDragging = (e) => {
+      if (!teamIsDragging) return; // if teamIsDragging is false return from here
+      // Updates the scroll position of the carousel based on the cursor movement
+      teamCarousel.scrollLeft = teamStartScrollLeft - (e.pageX - teamStartX);
+    };
+  
+    const teamDragStop = () => {
+      teamIsDragging = false;
+      teamCarousel.classList.remove("team-dragging");
+    };
+  
+    const teamInfiniteScroll = () => {
+      // If the carousel is at the beginning, scroll to the end
+      if (teamCarousel.scrollLeft === 0) {
+        teamCarousel.classList.add("team-no-transition");
+        teamCarousel.scrollLeft = teamCarousel.scrollWidth - 2 * teamCarousel.offsetWidth;
+        teamCarousel.classList.remove("team-no-transition");
+      }
+      // If the carousel is at the end, scroll to the beginning
+      else if (
+        Math.ceil(teamCarousel.scrollLeft) ===
+        teamCarousel.scrollWidth - teamCarousel.offsetWidth
+      ) {
+        teamCarousel.classList.add("team-no-transition");
+        teamCarousel.scrollLeft = teamCarousel.offsetWidth;
+        teamCarousel.classList.remove("team-no-transition");
+      }
+      // Clear existing timeout & start autoplay if mouse is not hovering over carousel
+      clearTimeout(teamTimeoutId);
+      if (!teamWrapper.matches(":hover")) teamAutoPlay();
+    };
+  
+    const teamAutoPlay = () => {
+      if (window.innerWidth < 800 || !teamIsAutoPlay) return; // Return if window is smaller than 800 or teamIsAutoPlay is false
+      // Autoplay the carousel after every 2500 ms
+      teamTimeoutId = setTimeout(
+        () => (teamCarousel.scrollLeft += teamFirstCardWidth),
+        2500
+      );
+    };
+  
+    teamAutoPlay();
+  
+    teamCarousel.addEventListener("mousedown", teamDragStart);
+    teamCarousel.addEventListener("mousemove", teamDragging);
+    document.addEventListener("mouseup", teamDragStop);
+    teamCarousel.addEventListener("scroll", teamInfiniteScroll);
+    teamWrapper.addEventListener("mouseenter", () => clearTimeout(teamTimeoutId));
+    teamWrapper.addEventListener("mouseleave", teamAutoPlay);
   });
-
-
-sdCarouselChildrens.slice(0, sdCardPerView).forEach((card) => {
-  sdCarousel.insertAdjacentHTML("beforeend", card.outerHTML);
-});
-
-
-sdCarousel.classList.add("sd-no-transition");
-sdCarousel.scrollLeft = sdCarousel.offsetWidth;
-sdCarousel.classList.remove("sd-no-transition");
-
-
-sdArrowBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    sdCarousel.scrollLeft += btn.id === "sd-left" ? -sdFirstCardWidth : sdFirstCardWidth;
-  });
-});
-
-const sdDragStart = (e) => {
-  sdIsDragging = true;
-  sdCarousel.classList.add("sd-dragging");
-
-  sdStartX = e.pageX;
-  sdStartScrollLeft = sdCarousel.scrollLeft;
-};
-
-const sdDragging = (e) => {
-  if (!sdIsDragging) return; 
-  sdCarousel.scrollLeft = sdStartScrollLeft - (e.pageX - sdStartX);
-};
-
-const sdDragStop = () => {
-  sdIsDragging = false;
-  sdCarousel.classList.remove("sd-dragging");
-};
-
-const sdInfiniteScroll = () => {
-
-  if (sdCarousel.scrollLeft === 0) {
-    sdCarousel.classList.add("sd-no-transition");
-    sdCarousel.scrollLeft = sdCarousel.scrollWidth - 2 * sdCarousel.offsetWidth;
-    sdCarousel.classList.remove("sd-no-transition");
-  }
-
-  else if (
-    Math.ceil(sdCarousel.scrollLeft) ===
-    sdCarousel.scrollWidth - sdCarousel.offsetWidth
-  ) {
-    sdCarousel.classList.add("sd-no-transition");
-    sdCarousel.scrollLeft = sdCarousel.offsetWidth;
-    sdCarousel.classList.remove("sd-no-transition");
-  }
-
-  clearTimeout(sdTimeoutId);
-  if (!sdWrapper.matches(":hover")) sdAutoPlay();
-};
-
-const sdAutoPlay = () => {
-  if (window.innerWidth < 800 || !sdIsAutoPlay) return; // Return if window is smaller than 800 or sdIsAutoPlay is false
-  sdTimeoutId = setTimeout(
-    () => (sdCarousel.scrollLeft += sdFirstCardWidth),
-    2500
-  );
-};
-
-sdAutoPlay();
-
-sdCarousel.addEventListener("mousedown", sdDragStart);
-sdCarousel.addEventListener("mousemove", sdDragging);
-document.addEventListener("mouseup", sdDragStop);
-sdCarousel.addEventListener("scroll", sdInfiniteScroll);
-sdWrapper.addEventListener("mouseenter", () => clearTimeout(sdTimeoutId));
-sdWrapper.addEventListener("mouseleave", sdAutoPlay);
-
-});
