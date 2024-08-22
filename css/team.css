@@ -1,17 +1,16 @@
-.sd-wrapper {
+.team-wrapper {
     width: 100%;
     position: relative;
     padding: 0 4rem;
     background-color: var(--color-text);
-    
   }
   
-  .sd-slider-wrapper {
+  .team-slider-wrapper {
     padding: 4rem 2rem;
     background: var(--color-text);
   }
   
-  .sd-slider-wrapper h1 {
+  .team-slider-wrapper h1 {
     line-height: 100%;
     text-transform: uppercase;
     font-family: var(--font-accent);
@@ -21,7 +20,7 @@
     margin: 1rem 0 3rem 0;
   }
   
-  .sd-wrapper .sd-arrow {
+  .team-wrapper .team-arrow {
     top: 50%;
     padding: 1rem;
     font-size: 3rem;
@@ -36,19 +35,19 @@
     border-radius: 50%;
   }
   
-  .sd-wrapper .sd-arrow:active {
+  .team-wrapper .team-arrow:active {
     transform: translateY(-50%) scale(0.85);
   }
   
-  .sd-wrapper .sd-arrow-left {
+  .team-wrapper .team-arrow-left {
     left: 1rem;
   }
   
-  .sd-wrapper .sd-arrow-right {
+  .team-wrapper .team-arrow-right {
     right: 1rem;
   }
   
-  .sd-wrapper .sd-carousel {
+  .team-wrapper .team-carousel {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: calc((100% / 4) - 12px);
@@ -59,31 +58,31 @@
     scrollbar-width: none;
   }
   
-  .sd-carousel::-webkit-scrollbar {
+  .team-carousel::-webkit-scrollbar {
     display: none;
   }
   
-  .sd-carousel.sd-no-transition {
+  .team-carousel.team-no-transition {
     scroll-behavior: auto;
   }
   
-  .sd-carousel.sd-dragging {
+  .team-carousel.team-dragging {
     scroll-snap-type: none;
     scroll-behavior: auto;
   }
   
-  .sd-carousel.sd-dragging .sd-card {
+  .team-carousel.team-dragging .team-card {
     cursor: grab;
     user-select: none;
   }
   
-  .sd-carousel :where(.sd-card, .sd-img) {
+  .team-carousel :where(.team-card, .team-img) {
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
-  .sd-carousel .sd-card {
+  .team-carousel .team-card {
     scroll-snap-align: start;
     height: 600px;
     list-style: none;
@@ -92,42 +91,42 @@
     flex-direction: column;
   }
   
-  .sd-carousel .sd-card .sd-img {
+  .team-carousel .team-card .team-img {
     height: 500px;
     width: 100%;
   }
   
-  .sd-card .sd-img img {
+  .team-card .team-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
   
-  .sd-carousel .sd-card h2 {
+  .team-carousel .team-card h2 {
     font-weight: 400;
     font-size: 1.5rem;
     margin: 1.5rem 0 0.5rem 0;
     color: var(--color-bg);
   }
   
-  .sd-carousel .sd-card span {
+  .team-carousel .team-card span {
     color: var(--color-bg);
     font-style: italic;
     font-size: 1.25rem;
   }
   
   @media screen and (max-width: 900px) {
-    .sd-wrapper .sd-carousel {
+    .team-wrapper .team-carousel {
       grid-auto-columns: calc((100% / 2) - 9px);
     }
   }
   
   @media screen and (max-width: 600px) {
-    .sd-wrapper .sd-carousel {
+    .team-wrapper .team-carousel {
       grid-auto-columns: 100%;
     }
   }
   
-  .sd-about {
+  .team-about {
     background-color: #000;
   }
