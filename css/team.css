@@ -1,5 +1,5 @@
 .team-wrapper {
-    width: 100%;
+    max-width: 1200px;
     position: relative;
     padding: 0 4rem;
     background-color: var(--color-text);
